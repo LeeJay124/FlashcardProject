@@ -2,19 +2,9 @@ import React, {useState, useEffect} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { deleteDeck } from "../utils/api";
 
-function Deck({ deck }) {
-  let history = useHistory();
-  const handleDelete = async (id) => {
-    const result = window.confirm("Delete this deck?");
-    if (result) {
-      
-          const abortController = new AbortController();
-      
-          deleteDeck(deck.id, abortController.signal);
-      
-          return () => abortController.abort();
-    }
-  };
+function Deck({ deck, handleDelete}) {
+  
+  
 
   return (
     <div className="card" style={{ width: "18rem" }} key={deck.id}>
