@@ -10,7 +10,7 @@ function Deck({ deck, handleDelete}) {
     <div className="card" style={{ width: "18rem" }} key={deck.id}>
       <div className="card-body">
         <h5 className="card-title">
-          {deck.name}{" "}
+          ID:{deck.id} {deck.name}
           <span className="card-subtitle float-right">
             {deck.cards.length} Cards
           </span>

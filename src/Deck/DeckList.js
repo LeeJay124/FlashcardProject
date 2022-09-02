@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {Route, Link, Switch, useRouteMatch, useParams} from "react-router-dom";
 import Deck from "./Deck";
-import { createDeck, listDecks, readDeck, deleteDeck } from "../utils/api";
+import { createDeck, listDecks, readDeck, deleteDeck, createCard , deleteCard} from "../utils/api";
 import NotFound from "../Layout/NotFound";
 import CreateDeck from "./CreateDecks";
 
@@ -11,23 +11,39 @@ function DeckList() {
   const [decks, setDecks] = useState([]);
   const [error, setError] = useState(undefined);
   const [cards, setCards] = useState([]);
-  const initialFormData = {
+  const initialDeckFormData = {
     name: "", 
     description:""
   };
-  const [formData, setFormData]=useState({...initialFormData});
-  const handleChange = ({target})=>{
-    setFormData({
-      ...formData, 
+  const [deckFormData, setDeckFormData]=useState({...initialDeckFormData});
+  const handleDeckChange = ({target})=>{
+    setDeckFormData({
+      ...deckFormData, 
       [target.name]:target.value,
     });   
   };
-  const handleSubmit = (event)=>{
+  const handleDeckSubmit = (event)=>{
     event.preventDefault();
-    handleCreate(formData);
-    setFormData({...initialFormData});
+    handleDeckCreate(deckFormData);
+    setDeckFormData({...initialDeckFormData});
   };
-
+  const initialCardFormData = {
+    deckId: "", 
+    front:"", 
+    back:""
+  };
+  const [cardFormData, setCardFormData]=useState({...initialCardFormData});
+  const handleCardChange = ({target})=>{
+    setCardFormData({
+      ...cardFormData, 
+      [target.name]:target.value,
+    });   
+  };
+  const handleCardSubmit = (event)=>{
+    event.preventDefault();
+    handleCardCreate(cardFormData);
+    setCardFormData({...initialCardFormData});
+  };
   useEffect(() => {
     const abortController = new AbortController();
 
@@ -44,7 +60,7 @@ function DeckList() {
   //   return () => abortController.abort();
   // }, []);
 
-  const handleDelete = async (id) => {
+  const handleDeckDelete = async (id) => {
     const result = window.confirm("Delete this deck?");
     if (result) {
       
@@ -56,7 +72,7 @@ function DeckList() {
     }
   };
   
-  const handleCreate = async (deck) => {
+  const handleDeckCreate = async (deck) => {
     const result = window.confirm("Create this deck?");
     if (result) {
       
@@ -67,11 +83,35 @@ function DeckList() {
           return () => abortController.abort();
     }
   };
+  const handleCardDelete = async (id) => {
+    const result = window.confirm("Delete this card?");
+    if (result) {
+      
+          const abortController = new AbortController();
+      
+          deleteCard(id, abortController.signal);
+      
+          return () => abortController.abort();
+    }
+  };
+  
+  const handleCardCreate = async (card) => {
+    const {deckId} = deckId;
+    const result = window.confirm("Create this card?");
+    if (result) {
+      
+          const abortController = new AbortController();
+      
+          createCard(deckId, card, abortController.signal);
+      
+          return () => abortController.abort();
+    }
+  };
 
   if (error) {
     return <NotFound error={error} />;
   }
-  const list = decks.map((deck) => <Deck key={deck.id} deck={deck} handleDelete={handleDelete}/>);
+  const list = decks.map((deck) => <Deck key={deck.id} deck={deck} handleDeckDelete={handleDeckDelete}/>);
   //const cardList = cards.map((card)=> <Study cards={cards}/>);
   return (
     <div>
@@ -94,32 +134,66 @@ function DeckList() {
       </button></Link>
       <div className="card-deck ptr-3 pt-3">{list}</div>
       <div className="pt-3">
-      <form name="create" onSubmit={handleSubmit}>
+      <form name="createDeck" onSubmit={handleDeckSubmit}>
         <table className="table table-bordered"> 
+        <tr><th>Create a new Deck</th></tr>
           <tr><td>
           <label className="p-3" for="name">Name</label>
           <input name="name"
                   id="name"
                   placeholder="Name"
-                  onChange={handleChange}
-                  value={formData.name} required />
+                  onChange={handleDeckChange}
+                  value={deckFormData.name} required />
                   </td></tr>
                   <tr><td>
           <label className="pr-3" for="description">Description</label>
           <input name="description"
                   id="description"
                   placeholder="Description"
-                  onChange={handleChange}
-                  value={formData.description} required />
+                  onChange={handleDeckChange}
+                  value={deckFormData.description} required />
                   </td></tr>
                   <tr><td>
-                  <button type="submit" className="btn btn-primary">Create</button>
+                  <button type="submit" className="btn btn-primary">Submit</button>
                   </td></tr>
           </table>
       </form>
       </div>
       {/* <div>{cardList}</div> */}
-      
+      <div className="pt-3">
+      <form name="createCard" onSubmit={handleCardSubmit}>
+        <table className="table table-bordered"> 
+        <tr><th>Create a new Card</th></tr>
+        <tr><td>
+          <label className="p-3" for="name">Deck ID</label>
+          <input name="deckId"
+                  id="deckId"
+                  placeholder="DeckId"
+                  onChange={handleCardChange}
+                  value={cardFormData.deckId} required />
+                  </td></tr>
+          <tr><td>
+          <label className="p-3" for="name">Front</label>
+          <input name="front"
+                  id="front"
+                  placeholder="Front"
+                  onChange={handleCardChange}
+                  value={cardFormData.front} required />
+                  </td></tr>
+                  <tr><td>
+          <label className="pr-3" for="description">Back</label>
+          <input name="back"
+                  id="back"
+                  placeholder="Back"
+                  onChange={handleCardChange}
+                  value={cardFormData.back} required />
+                  </td></tr>
+                  <tr><td>
+                  <button type="submit" className="btn btn-primary">Submit</button>
+                  </td></tr>
+          </table>
+      </form>
+      </div>
     </div>
   );
 }
