@@ -4,12 +4,14 @@
       "name": "Lisa ",
       "description": "Test",
       "id": 1
-    },
-    {
-      "name": "Jason",
-      "description": "Another Test",
-      "id": 2
     }
   ],
-  "cards": []
+  "cards": [
+    {
+      "deckId": 1,
+      "front": "test",
+      "back": "test",
+      "id": 1
+    }
+  ]
 }

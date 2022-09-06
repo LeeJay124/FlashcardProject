@@ -38,7 +38,7 @@
     },
     {
       "front": "What does <Switch> do?",
-      "back": "Renders the first matching child <Route> ",
+      "back": "Renders the first matching childs <Route> ",
       "deckId": 2,
       "id": 5
     },

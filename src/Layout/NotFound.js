@@ -1,10 +1,10 @@
 import React from "react";
 
-function NotFound({error}) {
+function NotFound() {
   return (
     <div className="NotFound">
       <h1>Not Found</h1>
-      <p>{error.message}</p>
+      
     </div>
   );
 }
