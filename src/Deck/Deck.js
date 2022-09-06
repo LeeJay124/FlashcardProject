@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { deleteDeck } from "../utils/api";
 
-function Deck({ deck, handleDelete}) {
-  
+function Deck({ deck, handleDeckDelete}) {
   
 
   return (
@@ -53,7 +52,7 @@ function Deck({ deck, handleDelete}) {
             Study
           </button>
         </Link>
-        <button className="btn btn-danger float-right" onClick={()=>handleDelete(deck.id)}>
+        <button className="btn btn-danger float-right" onClick={()=>handleDeckDelete(deck.id)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
