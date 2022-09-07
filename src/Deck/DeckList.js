@@ -94,8 +94,12 @@ function DeckList() {
       </button></Link>
       <Switch>
       
-      <Route path={"/"}><div className="card-deck ptr-3 pt-3">{list}</div></Route>
-      <Route path={"/decks"}><div className="card-deck ptr-3 pt-3">{list}</div></Route>
+      <Route path={"/"}>
+      
+        <div className="card-deck ptr-3 pt-3">{list}</div></Route>
+      <Route path={"/decks"}>
+      
+        <div className="card-deck ptr-3 pt-3">{list}</div></Route>
         {/* <Route path={"/decks/new"} ><CreateDeck handleDeckCreate={handleDeckCreate} /></Route> */}
         {/* <Route path={"/decks/:deckId/study"}><Study /></Route>
         <Route path={"/decks/:deckId"}></Route>
