@@ -16,7 +16,7 @@ function Deck({ deck, handleDeckDelete}) {
         </h5>
 
         <p className="card-text">{deck.description}</p>
-        <Link to={`deck/${deck.id}/cards`} className="mt-2 mr-2">
+        <Link to={`decks/${deck.id}`} className="mt-2 mr-2">
           <button className="btn btn-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@ function Deck({ deck, handleDeckDelete}) {
             View
           </button>
         </Link>
-        <Link to={`deck/${deck.id}/study`} className="mt-2 mr-2">
+        <Link to={`decks/${deck.id}/study`} className="mt-2 mr-2">
           <button className="btn btn-primary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
