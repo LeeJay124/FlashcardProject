@@ -22,9 +22,10 @@ function CreateCard ({handleCardCreate}){
         <div className="pt-3">
         <form name="createCard" onSubmit={handleCardSubmit}>
           <table className="table table-bordered"> 
+          <tbody>
           <tr><th>Create a new Card</th></tr>
           <tr><td>
-            <label className="p-3" for="name">Deck ID</label>
+            <label className="p-3" htmlFor="deckId">Deck ID</label>
             <input name="deckId"
                     id="deckId"
                     placeholder="DeckId"
@@ -32,7 +33,7 @@ function CreateCard ({handleCardCreate}){
                     value={cardFormData.deckId} required />
                     </td></tr>
             <tr><td>
-            <label className="p-3" for="name">Front</label>
+            <label className="p-3" fhtmlFor="front">Front</label>
             <input name="front"
                     id="front"
                     placeholder="Front"
@@ -40,7 +41,7 @@ function CreateCard ({handleCardCreate}){
                     value={cardFormData.front} required />
                     </td></tr>
                     <tr><td>
-            <label className="pr-3" for="description">Back</label>
+            <label className="pr-3" htmlFor="back">Back</label>
             <input name="back"
                     id="back"
                     placeholder="Back"
@@ -50,6 +51,7 @@ function CreateCard ({handleCardCreate}){
                     <tr><td>
                     <button type="submit" className="btn btn-primary">Submit</button>
                     </td></tr>
+                    </tbody>
             </table>
         </form>
         </div>

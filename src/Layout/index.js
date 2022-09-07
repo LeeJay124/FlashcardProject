@@ -15,7 +15,7 @@ function Layout() {
       <div className="container">
         {/* TODO: Implement the screen starting here */}
         
-        <Route path={"/"}></Route>
+        <Route path={"/"} exact><DeckList /></Route>
         <Route path={"/decks"} exact><DeckList /></Route>
         <Route path={"/decks/new"}><CreateDeck /></Route>
       </div>

@@ -21,7 +21,7 @@ function CreateDeck(){
           
               const abortController = new AbortController();
           
-              createDeck(deck, abortController.signal).then(listDecks);
+              createDeck(deck, abortController.signal);
           
               history.push("/decks");
         }
@@ -33,13 +33,14 @@ function CreateDeck(){
       };
       
     return (
-        
+        <>
     <div className="pt-3">
         <form name="createDeck" onSubmit={handleDeckSubmit}>
           <table className="table table-bordered"> 
+          <tbody>
           <tr><th>Create a new Deck</th></tr>
             <tr><td>
-            <label className="p-3" for="name">Name</label>
+            <label className="p-3" htmlFor="name">Name</label>
             <input name="name"
                     id="name"
                     type="text"
@@ -48,7 +49,7 @@ function CreateDeck(){
                     value={deckFormData.name} required />
                     </td></tr>
                     <tr><td>
-            <label className="pr-3" for="description">Description</label>
+            <label className="pr-3" htmlFor="description">Description</label>
             <textarea name="description"
                     id="description"
                     rows="5"
@@ -61,11 +62,12 @@ function CreateDeck(){
                     <tr><td>
                     <button type="submit" className="btn btn-primary">Submit</button>
                     </td></tr>
+                    </tbody>
             </table>
         </form>
     </div>
     
-        
+    </>   
     )
 }
 export default CreateDeck;

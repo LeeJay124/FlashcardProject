@@ -36,9 +36,9 @@ function DeckList() {
       
           const abortController = new AbortController();
       
-          deleteDeck(id, abortController.signal).then(listDecks);
+          deleteDeck(id, abortController.signal);
       
-          history.push("/decks");
+          history.push("/");
     }
   };
   
