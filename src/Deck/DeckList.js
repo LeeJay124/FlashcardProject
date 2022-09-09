@@ -108,10 +108,13 @@ function DeckList() {
         <div className="card-deck ptr-3 pt-3">{list}</div></Route>
       <Route path={"/decks"}>
       
-        <div className="card-deck ptr-3 pt-3">{list}</div></Route>
+        <div className="card-deck ptr-3 pt-3">{list}</div>
+       
+        </Route>
+        <Route path={"/decks/:deckId"}> <DeckView handleDeckDelete={handleDeckDelete} /></Route>
         {/* <Route path={"/decks/new"} ><CreateDeck handleDeckCreate={handleDeckCreate} /></Route> */}
         {/* <Route path={"/decks/:deckId/study"}><Study /></Route>
-        <Route path={"/decks/:deckId"}></Route>
+        
         <Route path={"/decks/:deckId/edit"}></Route>
         <Route path={"/decks/:deckId/cards/new"}><CreateCard handleCardCreate={handleCardCreate} /></Route>
         <Route path={"/decks/:deckId/cards/:cardId/edit"}></Route> */}

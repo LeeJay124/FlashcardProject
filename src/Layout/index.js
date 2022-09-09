@@ -3,6 +3,7 @@ import Header from "./Header";
 import CreateDeck from "../Deck/CreateDeck";
 import DeckList from "../Deck/DeckList";
 import {Route, Switch} from "react-router-dom";
+import DeckView from "../Deck/DeckView";
 
 
 
@@ -22,7 +23,10 @@ function Layout() {
           <DeckList /></Route>
         <Route path={"/decks"} exact>
         
-          <DeckList /></Route>
+          <DeckList />
+         
+          </Route>
+          <Route path={"/decks/:deckId"}> <DeckView  /></Route>
         <Route path={"/decks/new"}><CreateDeck /></Route>
       </div>
     </>
