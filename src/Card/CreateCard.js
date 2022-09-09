@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 
-function CreateCard ({handleCardCreate}){
+function CreateCard ({deck, handleCardCreate}){
     const initialCardFormData = {
-        deckId: "", 
+        deckId: `${deck.id}`, 
         front:"", 
         back:""
       };
@@ -30,10 +30,10 @@ function CreateCard ({handleCardCreate}){
                     id="deckId"
                     placeholder="DeckId"
                     onChange={handleCardChange}
-                    value={cardFormData.deckId} required />
+                    value={cardFormData.deckId} required readOnly/>
                     </td></tr>
             <tr><td>
-            <label className="p-3" fhtmlFor="front">Front</label>
+            <label className="p-3" htmlFor="front">Front</label>
             <input name="front"
                     id="front"
                     placeholder="Front"

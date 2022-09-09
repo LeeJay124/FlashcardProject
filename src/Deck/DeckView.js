@@ -1,11 +1,26 @@
 import React, {useState, useEffect} from "react";
-import {readDeck} from "../utils/api";
+import {readDeck, deleteDeck} from "../utils/api";
 import CardList from "../Card/CardList";
-import {Link, useParams, Route} from "react-router-dom";
+import {Link, useParams, Route, useHistory} from "react-router-dom";
 
-function DeckView({handleDeckDelete}){
+
+function DeckView(){
     const {deckId} = useParams();
+    const history = useHistory();
     const [deck, setDeck] = useState();
+
+    const handleDeckDelete = async (id) => {
+      const result = window.confirm("Delete this deck?");
+      if (result) {
+  
+        const abortController = new AbortController();
+  
+        deleteDeck(id, abortController.signal);
+  
+        history.push("/");
+      }
+    };
+
     useEffect(() => {
         const abortController = new AbortController();
     
@@ -63,7 +78,7 @@ function DeckView({handleDeckDelete}){
               Study
             </button>
           </Link>
-          <button className="btn btn-danger float-right" onClick={()=>handleDeckDelete(deck?.id)}>
+          <button className="btn btn-danger float-right" onClick={()=>handleDeckDelete(deck.id)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
