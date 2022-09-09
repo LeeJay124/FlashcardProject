@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {createDeck, listDecks} from "../utils/api";
-import { useHistory} from "react-router-dom";
+import { Route, useHistory} from "react-router-dom";
 
 function CreateDeck(){
     const history = useHistory();
@@ -33,6 +33,8 @@ function CreateDeck(){
       };
       
     return (
+      <Route path={"/decks/new"} exact>
+         
         <>
     <div className="pt-3">
         <form name="createDeck" onSubmit={handleDeckSubmit}>
@@ -68,6 +70,8 @@ function CreateDeck(){
     </div>
     
     </>   
+    
+        </Route>
     )
 }
 export default CreateDeck;

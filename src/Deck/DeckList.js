@@ -6,7 +6,7 @@ import NotFound from "../Layout/NotFound";
 import CreateDeck from "./CreateDeck";
 import CreateCard from "../Card/CreateCard";
 import Study from "./Study";
-import DeckView from "./DeckView";
+
 import Breadcrumb from "./BreadCrumb";
 
 function DeckList() {
@@ -103,15 +103,18 @@ function DeckList() {
       </button></Link>
       <Switch>
       
-      <Route path={"/"}>
+      <Route path={"/"} exact>
       <Breadcrumb crumbs={ crumbs } selected={ selected }  />
         <div className="card-deck ptr-3 pt-3">{list}</div></Route>
       <Route path={"/decks"}>
-      
+      <Breadcrumb crumbs={ crumbs } selected={ selected }  />
+        
         <div className="card-deck ptr-3 pt-3">{list}</div>
        
         </Route>
-        <Route path={"/decks/:deckId"}> <DeckView handleDeckDelete={handleDeckDelete} /></Route>
+        <Route path={"/decks/new"} >
+          <CreateDeck />
+        </Route>
         {/* <Route path={"/decks/new"} ><CreateDeck handleDeckCreate={handleDeckCreate} /></Route> */}
         {/* <Route path={"/decks/:deckId/study"}><Study /></Route>
         

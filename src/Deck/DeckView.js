@@ -15,7 +15,7 @@ function DeckView({handleDeckDelete}){
       }, []);
 
     return (
-        <Route path={"/decks/:deckId"}> 
+        <Route path={`/decks/${deckId}`}> 
         <div className="p-3">
         <div className="card" style={{ width: "18rem" }} key={deck?.id}>
         <div className="card-body">
