@@ -58,6 +58,7 @@ function CardList({ deck }) {
         </button></Link>
         <div className="card-deck ptr-3 pt-3">{list}</div>
         <Route path={`${url}/cards/new`}><CreateCard  deck={deck} handleCardCreate={handleCardCreate}/></Route>
+        <Route path={`${url}/cards/:cardId/edit`}></Route>
         </div>
     )
 }

@@ -1,13 +1,17 @@
 import React, {useState, useEffect} from "react";
 import {readDeck, deleteDeck} from "../utils/api";
 import CardList from "../Card/CardList";
-import {Link, useParams, Route, useHistory} from "react-router-dom";
+import {Link, useParams, Route, useHistory, useRouteMatch} from "react-router-dom";
+import UpdateDeck from "./UpdateDeck";
+
 
 
 function DeckView(){
     const {deckId} = useParams();
     const history = useHistory();
+    const {url} = useRouteMatch();
     const [deck, setDeck] = useState();
+    
 
     const handleDeckDelete = async (id) => {
       const result = window.confirm("Delete this deck?");
@@ -21,6 +25,8 @@ function DeckView(){
       }
     };
 
+    
+
     useEffect(() => {
         const abortController = new AbortController();
     
@@ -30,7 +36,9 @@ function DeckView(){
       }, []);
 
     return (
-        <Route path={`/decks/${deckId}`}> 
+      <div>
+        <Route path={`/decks/${deckId}`} exact> 
+        
         <div className="p-3">
         <div className="card" style={{ width: "18rem" }} key={deck?.id}>
         <div className="card-body">
@@ -42,7 +50,7 @@ function DeckView(){
           </h5>
   
           <p className="card-text">{deck?.description}</p>
-          <Link to={`decks/${deck?.id}`} className="mt-2 mr-2">
+          <Link to={`${url}/edit`} className="mt-2 mr-2">
             <button className="btn btn-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +63,7 @@ function DeckView(){
                 <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
                 <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
               </svg>
-              View
+              Edit Deck
             </button>
           </Link>
           <Link to={`decks/${deck?.id}/study`} className="mt-2 mr-2">
@@ -95,6 +103,8 @@ function DeckView(){
       {deck && <CardList deck={deck} />}
       </div>
       </Route>
+      <Route path={`${url}/edit`}><UpdateDeck deck={deck} /></Route>
+      </div>
     )
 }
 export default DeckView;

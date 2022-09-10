@@ -6,6 +6,7 @@ import { Route, Switch } from "react-router-dom";
 import DeckView from "../Deck/DeckView";
 import CreateCard from "../Card/CreateCard";
 import NotFound from "./NotFound";
+import UpdateDeck from "../Deck/UpdateDeck";
 
 function Layout() {
   return (
@@ -30,9 +31,7 @@ function Layout() {
         <Route path={"/decks/:deckId"} >
           <DeckView />
         </Route>
-        <Route>
-          <NotFound />
-        </Route>
+        {/* <Route path={"/decks/:deckId/edit"}><UpdateDeck /></Route> */}
         {/* <Route path={"/decks/:deckId/cards/new"}><CreateCard /></Route> */}
         
 

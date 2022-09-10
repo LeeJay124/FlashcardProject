@@ -16,13 +16,14 @@ function DeckList() {
   const [error, setError] = useState(undefined);
   const [cards, setCards] = useState([]);
 
-  const [crumbs, setCrumbs] = useState(['Home', 'Decks', 'Cards']);
+  //const [crumbs, setCrumbs] = useState(['Home', 'Decks', 'Cards']);
 
-  const selected = crumb => {
-    console.log(crumb);
-    if (crumb == "Home") history.push("/");
-    else if (crumb == "Decks") history.push("/decks");
-  }
+  // const selected = crumb => {
+  //   console.log(crumb);
+  //   if (crumb == "Home") history.push("/");
+  //   else if (crumb == "Decks") history.push("/decks");
+  // };
+
   useEffect(() => {
     const abortController = new AbortController();
 
@@ -78,15 +79,16 @@ function DeckList() {
       <Switch>
 
         <Route path={"/"} exact>
-          <Breadcrumb crumbs={crumbs} selected={selected} />
+          
           <div className="card-deck ptr-3 pt-3">{list}</div></Route>
         <Route path={"/decks"}>
-          <Breadcrumb crumbs={crumbs} selected={selected} />
+          
 
           <div className="card-deck ptr-3 pt-3">{list}</div>
 
         </Route>
         <Route path={"/decks/new"} >
+        
           <CreateDeck />
         </Route>
         
@@ -95,7 +97,9 @@ function DeckList() {
         <Route path={"/decks/:deckId/edit"}></Route>
         
         <Route path={"/decks/:deckId/cards/:cardId/edit"}></Route> */}
-        
+        <Route>
+          <NotFound />
+        </Route>
       </Switch>
 
 

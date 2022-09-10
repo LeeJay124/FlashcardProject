@@ -10,7 +10,6 @@
     "cross-fetch": "^3.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-breadcrumbs-hoc": "^4.1.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "^5.0.1"
   },

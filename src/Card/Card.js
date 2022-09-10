@@ -11,7 +11,7 @@ function Card({card, handleCardDelete}){
         </h5>
         <p className="card-text"><span className="font-weight-bold">Front: </span> {card.front}</p>
         <p className="card-text"><span className="font-weight-bold">Back: </span> {card.back}</p>
-        <Link to={`${url}/${card.id}`} className="mt-2 mr-2">
+        <Link to={`${url}/cards/${card.id}/edit`} className="mt-2 mr-2">
           <button className="btn btn-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
