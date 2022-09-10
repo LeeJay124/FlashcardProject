@@ -7,10 +7,10 @@ function Card({card, handleCardDelete}){
         <div className="card" style={{ width: "18rem" }} key={card.id}>
       <div className="card-body">
         <h5 className="card-title">
-          ID:{card.id} 
+          Card ID:{card.id} 
         </h5>
-        <p className="card-text">{card.front}</p>
-        <p className="card-text">{card.back}</p>
+        <p className="card-text"><span className="font-weight-bold">Front: </span> {card.front}</p>
+        <p className="card-text"><span className="font-weight-bold">Back: </span> {card.back}</p>
         <Link to={`${url}/${card.id}`} className="mt-2 mr-2">
           <button className="btn btn-secondary">
             <svg
@@ -24,7 +24,7 @@ function Card({card, handleCardDelete}){
               <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
               <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
             </svg>
-            View
+            Edit
           </button>
         </Link>
         

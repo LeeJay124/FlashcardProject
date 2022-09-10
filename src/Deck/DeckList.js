@@ -95,9 +95,7 @@ function DeckList() {
         <Route path={"/decks/:deckId/edit"}></Route>
         
         <Route path={"/decks/:deckId/cards/:cardId/edit"}></Route> */}
-        <Route>
-          <NotFound />
-        </Route>
+        
       </Switch>
 
 
