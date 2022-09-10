@@ -3,6 +3,7 @@ import Card from "./Card";
 import { deleteCard, createCard } from "../utils/api";
 import { Link, Route, useHistory, useRouteMatch } from "react-router-dom";
 import CreateCard from "./CreateCard";
+import UpdateCard from "./UpdateCard";
 
 function CardList({ deck }) {
     const { cards } = deck;
@@ -58,7 +59,7 @@ function CardList({ deck }) {
         </button></Link>
         <div className="card-deck ptr-3 pt-3">{list}</div>
         <Route path={`${url}/cards/new`}><CreateCard  deck={deck} handleCardCreate={handleCardCreate}/></Route>
-        <Route path={`${url}/cards/:cardId/edit`}></Route>
+        <Route path={`${url}/cards/:cardId/edit`}><UpdateCard /></Route>
         </div>
     )
 }
