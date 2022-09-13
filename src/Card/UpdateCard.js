@@ -48,7 +48,7 @@ function UpdateCard (){
         // setCardFormData({...initialCardFormData});
       };
     return (
-      <Route path={`${url}`}>
+      <Route path={`${url}/cards/:cardId/edit`}>
         <div className="pt-3">
         <form name="createCard" onSubmit={handleCardSubmit}>
           <table className="table table-bordered"> 
