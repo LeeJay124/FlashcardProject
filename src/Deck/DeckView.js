@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { readDeck, deleteDeck } from "../utils/api";
 import CardList from "../Card/CardList";
-import { Link, useParams, Route, useHistory, useRouteMatch } from "react-router-dom";
-import UpdateDeck from "./UpdateDeck";
+import { Link, useParams, useHistory, useRouteMatch } from "react-router-dom";
+
 
 
 

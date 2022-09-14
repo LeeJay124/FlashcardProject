@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link, useRouteMatch, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Deck from "./Deck";
 import { listDecks, deleteDeck } from "../utils/api";
 
 
 function DeckList() {
   const history = useHistory();
-  const { url } = useRouteMatch();
+  
   const [decks, setDecks] = useState([]);
  
-  const [cards, setCards] = useState([]);
-
+  
   
 
   useEffect(() => {

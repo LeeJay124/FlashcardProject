@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {createDeck, listDecks} from "../utils/api";
+import {createDeck} from "../utils/api";
 import { Link, useHistory} from "react-router-dom";
 
 function CreateDeck(){

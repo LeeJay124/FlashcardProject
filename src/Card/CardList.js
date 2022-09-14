@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 import { deleteCard, createCard } from "../utils/api";
-import { Link, Route, useHistory, useRouteMatch } from "react-router-dom";
+import { Route, useHistory, useRouteMatch } from "react-router-dom";
 import CreateCard from "./CreateCard";
 import UpdateCard from "./UpdateCard";
 

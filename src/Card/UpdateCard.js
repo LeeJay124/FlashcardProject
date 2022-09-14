@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
 import {updateCard, readCard, readDeck} from "../utils/api";
-import {useHistory, useParams, Link, useRouteMatch} from "react-router-dom";
+import {useHistory, useParams, Link} from "react-router-dom";
 
 function UpdateCard (){
   const {cardId, deckId} = useParams();
     const history = useHistory();
-    const {url} = useRouteMatch();
+   
     const [deck, setDeck] = useState({});
     const [card, setCard] = useState({});
     

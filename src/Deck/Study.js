@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useRouteMatch, useHistory, Link } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { readDeck } from "../utils/api";
 
 function Study() {
-  const { url } = useRouteMatch();
+ 
   const history = useHistory();
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
