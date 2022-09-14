@@ -11,6 +11,7 @@ function DeckView() {
   const history = useHistory();
   const { url } = useRouteMatch();
   const [deck, setDeck] = useState();
+  
 
 
   const handleDeckDelete = async (id) => {
@@ -100,7 +101,7 @@ function DeckView() {
             </div>
           </div>
           {deck && <CardList deck={deck} />}
-      
+         
     </div>
    
   </div>

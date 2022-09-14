@@ -8,6 +8,7 @@ import NotFound from "./NotFound";
 import CardList from "../Card/CardList";
 import CreateCard from "../Card/CreateCard";
 import UpdateCard from "../Card/UpdateCard";
+import Study from "../Deck/Study";
 
 function DeckLayout() {
   const {url} = useRouteMatch();
@@ -27,6 +28,9 @@ function DeckLayout() {
         </Route>
       <Route path={`${url}/:deckId/edit`} exact>
           <UpdateDeck />
+        </Route>
+        <Route path={`${url}/:deckId/study`} exact>
+          <Study />
         </Route>
       <Route path={`${url}/:deckId/cards/new`} exact>
           <CreateCard />
