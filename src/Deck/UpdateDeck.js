@@ -54,7 +54,7 @@ function UpdateDeck() {
   return (
 
 
-    <>
+    <div>
 
 
       <div className="pt-3">
@@ -110,7 +110,7 @@ function UpdateDeck() {
       </div>
 
 
-    </>
+    </div>
 
 
   )

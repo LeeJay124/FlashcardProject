@@ -1,15 +1,25 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Card from "./Card";
-import { deleteCard, createCard } from "../utils/api";
-import { Route, useHistory, useRouteMatch } from "react-router-dom";
+import { deleteCard, createCard, readDeck } from "../utils/api";
+import { Route, useHistory, useParams, useRouteMatch } from "react-router-dom";
 import CreateCard from "./CreateCard";
 import UpdateCard from "./UpdateCard";
 
-function CardList({ deck }) {
-    const { cards } = deck;
+function CardList() {
+    const { deckId } = useParams();
     const history = useHistory();
     const {url} = useRouteMatch();
+    const [deck, setDeck] = useState({});
+    const [cards, setCards] = useState([]);
 
+    useEffect(() => {
+      const abortController = new AbortController();
+  
+      readDeck(deckId, abortController.signal).then((data) => { setDeck(data); setCards(data.cards); });
+  
+      return () => abortController.abort();
+    }, []);
+  
     const handleCardDelete = async (id) => {
         const result = window.confirm("Delete this card?");
         if (result) {

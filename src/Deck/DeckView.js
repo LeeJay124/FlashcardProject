@@ -10,7 +10,7 @@ function DeckView() {
   const { deckId } = useParams();
   const history = useHistory();
   const { url } = useRouteMatch();
-  const [deck, setDeck] = useState();
+  const [deck, setDeck] = useState({});
   
 
 
@@ -31,7 +31,7 @@ function DeckView() {
   useEffect(() => {
     const abortController = new AbortController();
 
-    readDeck(deckId, abortController.signal).then(setDeck);
+    readDeck(deckId, abortController.signal).then((data)=>setDeck(data));
 
     return () => abortController.abort();
   }, []);
@@ -46,10 +46,10 @@ function DeckView() {
   <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
 </svg>Home</Link></li>
     
-    <li className="breadcrumb-item active" aria-current="page">{deck?.name}</li>
+    <li className="breadcrumb-item active" aria-current="page">{deck.name}</li>
   </ol>
 </nav>
-          <div className="card" key={deck?.id}>
+          <div className="card" key={deck.id}>
             <div className="card-body">
               <h5 className="card-title">
                 ID:{deck?.id} {deck?.name}
@@ -58,7 +58,7 @@ function DeckView() {
                 </span>
               </h5>
 
-              <p className="card-text">{deck?.description}</p>
+              <p className="card-text">{deck.description}</p>
               <Link to={`${url}/edit`} className="mt-2 mr-2">
                 <button className="btn btn-secondary">
                   <svg
@@ -126,7 +126,7 @@ function DeckView() {
               </button>
             </div>
           </div>
-          {deck && <CardList deck={deck} />}
+           <CardList deck={deck} />
          
     </div>
    
