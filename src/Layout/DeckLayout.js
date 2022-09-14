@@ -5,7 +5,7 @@ import DeckList from "../Deck/DeckList";
 import {Switch, Route, useRouteMatch} from "react-router-dom";
 import UpdateDeck from "../Deck/UpdateDeck";
 import NotFound from "./NotFound";
-import CardList from "../Card/CardList";
+
 import CreateCard from "../Card/CreateCard";
 import UpdateCard from "../Card/UpdateCard";
 import Study from "../Deck/Study";

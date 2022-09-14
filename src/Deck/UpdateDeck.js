@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { updateDeck, readDeck } from "../utils/api";
-import { Link, useHistory, useParams, useRouteMatch } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 
 function UpdateDeck() {
   const { deckId } = useParams();
   const history = useHistory();
-  const { url } = useRouteMatch();
+  
   const [deck, setDeck] = useState({});
 
   useEffect(() => {
@@ -48,7 +48,7 @@ function UpdateDeck() {
   const handleDeckSubmit = (event) => {
     event.preventDefault();
     handleDeckUpdate(deckFormData);
-    // setDeckFormData({...initialDeckFormData});
+    
   };
 
   return (

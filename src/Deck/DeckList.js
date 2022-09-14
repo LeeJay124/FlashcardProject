@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Route, Link, Switch, useRouteMatch, useHistory, useParams } from "react-router-dom";
+import { Link, useRouteMatch, useHistory } from "react-router-dom";
 import Deck from "./Deck";
-import { createDeck, listDecks, readDeck, deleteDeck, createCard, deleteCard } from "../utils/api";
-import CreateDeck from "./CreateDeck";
-import CreateCard from "../Card/CreateCard";
-import Study from "./Study";
+import { listDecks, deleteDeck } from "../utils/api";
 
-import Breadcrumb from "./BreadCrumb";
 
 function DeckList() {
   const history = useHistory();
@@ -15,13 +11,7 @@ function DeckList() {
  
   const [cards, setCards] = useState([]);
 
-  //const [crumbs, setCrumbs] = useState(['Home', 'Decks', 'Cards']);
-
-  // const selected = crumb => {
-  //   console.log(crumb);
-  //   if (crumb == "Home") history.push("/");
-  //   else if (crumb == "Decks") history.push("/decks");
-  // };
+  
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -31,13 +21,7 @@ function DeckList() {
     return () => abortController.abort();
   }, []);
 
-  // useEffect(() => {
-  //   const abortController = new AbortController();
-
-  //   readDeck(abortController.signal).then(setCards).catch(setError);
-
-  //   return () => abortController.abort();
-  // }, []);
+  
 
   const handleDeckDelete = async (id) => {
     const result = window.confirm("Delete this deck?");
