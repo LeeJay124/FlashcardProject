@@ -98,7 +98,7 @@ function UpdateCard (){
                     value={cardFormData.back} required></textarea>
                     </td></tr>
                     <tr><td>
-                    <button type="submit" className="btn btn-primary ">Submit</button>
+                    <button type="submit" className="btn btn-primary mr-3">Submit</button>
                     <button  type="button" onClick={()=> history.goBack()} className="btn btn-danger">Cancel</button>
 
                     </td></tr>

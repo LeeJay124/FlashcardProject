@@ -39,7 +39,7 @@
     {
       "id": 5,
       "front": "What does <Switch> do?",
-      "back": "Renders the first matching childs <Route> ",
+      "back": "Renders the first matching childs <Route>",
       "deckId": 2
     }
   ]

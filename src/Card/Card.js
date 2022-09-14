@@ -4,7 +4,7 @@ import {Link, useRouteMatch} from "react-router-dom";
 function Card({card, handleCardDelete}){
   const {url} = useRouteMatch();
     return(
-        <div className="card" style={{ width: "18rem" }} key={card.id}>
+        <div className="card" key={card.id}>
       <div className="card-body">
         <h5 className="card-title">
           Card ID:{card.id} 

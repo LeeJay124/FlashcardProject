@@ -40,7 +40,7 @@ function DeckView() {
     <div>
       
         <div className="p-3">
-          <div className="card" style={{ width: "18rem" }} key={deck?.id}>
+          <div className="card" key={deck?.id}>
             <div className="card-body">
               <h5 className="card-title">
                 ID:{deck?.id} {deck?.name}
@@ -86,6 +86,23 @@ function DeckView() {
                   Study
                 </button>
               </Link>
+              <Link to={`${url}/cards/new`}>
+        <button className="btn btn-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="bi bi-plus-lg mr-2"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fillRule="evenodd"
+              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+            />
+          </svg>
+          Add Cards
+        </button></Link>
               <button className="btn btn-danger float-right" onClick={() => handleDeckDelete(deck.id)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
