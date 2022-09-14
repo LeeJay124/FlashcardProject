@@ -41,12 +41,12 @@ function Study() {
         {
           cards.length > 2 ? <div>
             <h2>{`${deck.name}`}</h2>
-            <div className="card" style={{ width: "18rem" }}>
+            <div className="card">
               <div className="card-body">
                 <h5 className="card-title"> Card {currentCard + 1} of {cards.length}</h5>
 
                 <p className="card-text">{isFlipped ? `${cards[currentCard].back}` : `${cards[currentCard].front}`}</p>
-                <button className="btn btn-primary" type="button" onClick={() => setIsFlipped(!isFlipped)}>Flip</button>
+                <button className="btn btn-primary mr-3" type="button" onClick={() => setIsFlipped(!isFlipped)}>Flip</button>
                 {(currentCard + 1) === cards.length ? <button className="btn btn-primary" type="button" onClick={() => handleRestart()}>Start Over</button> : <button className="btn btn-primary" type="button" onClick={() => updateCurrentCard()}>Next Card</button>}
               </div>
             </div>
