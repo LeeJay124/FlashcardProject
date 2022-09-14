@@ -3,23 +3,30 @@ import {updateCard, readCard} from "../utils/api";
 import {useHistory, useParams, Route, useRouteMatch} from "react-router-dom";
 
 function UpdateCard (){
-  const {cardId} = useParams();
+  const {cardId, deckId} = useParams();
     const history = useHistory();
     const {url} = useRouteMatch();
     
-    const [card, setCard] = useState();
+    const [card, setCard] = useState({});
     
     const initialCardFormData = {
-        deckId: `${card.deckId}`, 
-        id: `${card.id}`,
-        front:`${card.front}`, 
-        back:`${card.back}`
+         
+        id: ``,
+        front:``, 
+        back:``,
+        deckId: ``
       };
 
       useEffect(() => {
         const abortController = new AbortController();
     
-        readCard(cardId, abortController.signal).then(setCard);
+        readCard(cardId, abortController.signal).then((data)=>{setCard(data); setCardFormData({
+          
+          id: `${data.id}`,
+          front:`${data.front}`, 
+          back:`${data.back}`, 
+          deckId: `${data.deckId}`
+        })});
     
         return () => abortController.abort();
       }, []);
@@ -48,9 +55,9 @@ function UpdateCard (){
         // setCardFormData({...initialCardFormData});
       };
     return (
-      <Route path={`${url}/cards/:cardId/edit`}>
+      
         <div className="pt-3">
-        <form name="createCard" onSubmit={handleCardSubmit}>
+        <form name="updateCard" onSubmit={handleCardSubmit}>
           <table className="table table-bordered"> 
           <tbody>
           <tr><th>Update Card</th></tr>
@@ -58,42 +65,48 @@ function UpdateCard (){
             <label className="p-3" htmlFor="deckId">Deck ID</label>
             <input name="deckId"
                     id="deckId"
-                    placeholder="DeckId"
-                    onChange={handleCardChange}
+                    
+                    
                     value={cardFormData.deckId} required readOnly/>
                     </td></tr>
                     <tr><td>
             <label className="p-3" htmlFor="id">Card ID</label>
             <input name="id"
                     id="id"
-                    placeholder="id"
-                    onChange={handleCardChange}
+                    
+                    
                     value={cardFormData.id} required readOnly/>
                     </td></tr>
             <tr><td>
             <label className="p-3" htmlFor="front">Front</label>
-            <input name="front"
+            <textarea name="front"
                     id="front"
                     placeholder="Front"
+                    rows="5"
+                  cols="50"
                     onChange={handleCardChange}
-                    value={cardFormData.front} required />
+                    value={cardFormData.front} required></textarea>
                     </td></tr>
                     <tr><td>
             <label className="pr-3" htmlFor="back">Back</label>
-            <input name="back"
+            <textarea name="back"
                     id="back"
                     placeholder="Back"
+                    rows="5"
+                  cols="50"
                     onChange={handleCardChange}
-                    value={cardFormData.back} required />
+                    value={cardFormData.back} required></textarea>
                     </td></tr>
                     <tr><td>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary ">Submit</button>
+                    <button  type="button" onClick={()=> history.goBack()} className="btn btn-danger">Cancel</button>
+
                     </td></tr>
                     </tbody>
             </table>
         </form>
         </div>
-        </Route>
+        
     )
 }
 export default UpdateCard;

@@ -11,21 +11,23 @@ function UpdateDeck() {
   useEffect(() => {
     const abortController = new AbortController();
 
-    readDeck(deckId, abortController.signal).then((data)=> {setDeck(data);
-    setDeckFormData({
-      id: `${data.id}`,
-      name: `${data.name}`,
-      description: `${data.description}`
-    })});
+    readDeck(deckId, abortController.signal).then((data) => {
+      setDeck(data);
+      setDeckFormData({
+        id: `${data.id}`,
+        name: `${data.name}`,
+        description: `${data.description}`
+      })
+    });
     return () => abortController.abort();
   }, []);
 
-const initialDeckFormData = {
-  id: ``,
-      name: ``,
-      description: ``
-};
-  const [deckFormData, setDeckFormData] = useState({...initialDeckFormData});
+  const initialDeckFormData = {
+    id: ``,
+    name: ``,
+    description: ``
+  };
+  const [deckFormData, setDeckFormData] = useState({ ...initialDeckFormData });
   const handleDeckChange = ({ target }) => {
     setDeckFormData({
       ...deckFormData,
@@ -56,7 +58,7 @@ const initialDeckFormData = {
 
 
       <div className="pt-3">
-        <form name="createDeck" onSubmit={handleDeckSubmit}>
+        <form name="updateDeck" onSubmit={handleDeckSubmit}>
           <table className="table table-bordered">
             <tbody>
               <tr><th>Update Deck</th></tr>
@@ -91,7 +93,7 @@ const initialDeckFormData = {
               </td></tr>
               <tr><td>
                 <button type="submit" className="btn btn-primary">Submit</button>
-                {/* <button  onClick={()=> history.goBack()} className="btn btn-danger">Cancel</button> */}
+                <button  type="button" onClick={()=> history.goBack()} className="btn btn-danger">Cancel</button>
               </td></tr>
             </tbody>
           </table>
