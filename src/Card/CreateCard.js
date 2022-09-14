@@ -1,8 +1,39 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import {useParams, useHistory} from "react-router-dom";
+import {readDeck, createCard} from "../utils/api";
 
-function CreateCard ({deck, handleCardCreate}){
+function CreateCard (){
+const {deckId} = useParams();
+const [deck, setDeck] = useState({});
+const history = useHistory();
+
+useEffect(() => {
+  const abortController = new AbortController();
+
+  readDeck(deckId, abortController.signal).then((data)=> {setDeck(data); setCardFormData({
+    deckId: `${data.id}`, 
+        front:"", 
+        back:""
+  })});
+
+  return () => abortController.abort();
+}, []);
+  const handleCardCreate = async (card) => {
+    //const {deckId} = deckId;
+    const result = window.confirm("Create this card?");
+    if (result) {
+
+        const abortController = new AbortController();
+
+        createCard(card.deckId, card, abortController.signal);
+
+        history.push("/decks");
+    }
+};
+
+
     const initialCardFormData = {
-        deckId: `${deck.id}`, 
+        deckId: "", 
         front:"", 
         back:""
       };

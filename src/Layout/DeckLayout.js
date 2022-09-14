@@ -4,8 +4,9 @@ import DeckView from "../Deck/DeckView";
 import DeckList from "../Deck/DeckList";
 import {Switch, Route, useRouteMatch} from "react-router-dom";
 import UpdateDeck from "../Deck/UpdateDeck";
-import CardList from "../Card/CardList";
 import NotFound from "./NotFound";
+import CardList from "../Card/CardList";
+import CreateCard from "../Card/CreateCard";
 
 function DeckLayout() {
   const {url} = useRouteMatch();
@@ -26,8 +27,8 @@ function DeckLayout() {
       <Route path={`${url}/:deckId/edit`} exact>
           <UpdateDeck />
         </Route>
-      <Route path={`${url}/:deckId/card`} exact>
-          <CardList />
+      <Route path={`${url}/:deckId/cards/new`} exact>
+          <CreateCard />
         </Route>
         <Route><NotFound /></Route>
         </Switch>
