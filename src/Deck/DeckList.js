@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Route, Link, Switch, useRouteMatch, useHistory, useParams } from "react-router-dom";
 import Deck from "./Deck";
 import { createDeck, listDecks, readDeck, deleteDeck, createCard, deleteCard } from "../utils/api";
-import NotFound from "../Layout/NotFound";
 import CreateDeck from "./CreateDeck";
 import CreateCard from "../Card/CreateCard";
 import Study from "./Study";
@@ -13,7 +12,7 @@ function DeckList() {
   const history = useHistory();
   const { url } = useRouteMatch();
   const [decks, setDecks] = useState([]);
-  const [error, setError] = useState(undefined);
+ 
   const [cards, setCards] = useState([]);
 
   //const [crumbs, setCrumbs] = useState(['Home', 'Decks', 'Cards']);
@@ -27,7 +26,7 @@ function DeckList() {
   useEffect(() => {
     const abortController = new AbortController();
 
-    listDecks(abortController.signal).then(setDecks).catch(setError);
+    listDecks(abortController.signal).then(setDecks);
 
     return () => abortController.abort();
   }, []);
@@ -51,14 +50,13 @@ function DeckList() {
       history.push("/");
     }
   };
+  
+const list = decks.map((deck) => <Deck key={deck.id} deck={deck} handleDeckDelete={handleDeckDelete} />);
 
-  if (error) {
-    return <NotFound error={error} />;
-  }
-  const list = decks.map((deck) => <Deck key={deck.id} deck={deck} handleDeckDelete={handleDeckDelete} />);
-  //const cardList = cards.map((card)=> <Study cards={cards}/>);
   return (
+    
     <div>
+      
       <Link to={"/decks/new"}>
         <button className="btn btn-secondary">
           <svg
@@ -76,37 +74,18 @@ function DeckList() {
           </svg>
           Create Deck
         </button></Link>
-      <Switch>
+      <div className="card-deck ptr-3 pt-3">{list}</div>
 
-        <Route path={"/"} exact>
-          
-          <div className="card-deck ptr-3 pt-3">{list}</div></Route>
-        <Route path={"/decks"}>
+      
           
 
-          <div className="card-deck ptr-3 pt-3">{list}</div>
-
-        </Route>
-        <Route path={"/decks/new"} >
-        
-          <CreateDeck />
-        </Route>
-        
-        {/* <Route path={"/decks/:deckId/study"}><Study /></Route>
-        
-        <Route path={"/decks/:deckId/edit"}></Route>
-        
-        <Route path={"/decks/:deckId/cards/:cardId/edit"}></Route> */}
-        <Route>
-          <NotFound />
-        </Route>
-      </Switch>
 
 
 
 
 
     </div>
+      
   );
 }
 export default DeckList;

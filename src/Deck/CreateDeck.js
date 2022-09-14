@@ -33,7 +33,7 @@ function CreateDeck(){
       };
       
     return (
-      <Route path={"/decks/new"} exact>
+      
          
         <>
     <div className="pt-3">
@@ -71,7 +71,7 @@ function CreateDeck(){
     
     </>   
     
-        </Route>
+        
     )
 }
 export default CreateDeck;

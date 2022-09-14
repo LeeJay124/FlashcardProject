@@ -37,7 +37,7 @@ function DeckView(){
 
     return (
       <div>
-        <Route path={`/decks/${deckId}`} exact> 
+       
         
         <div className="p-3">
         <div className="card" style={{ width: "18rem" }} key={deck?.id}>
@@ -102,8 +102,7 @@ function DeckView(){
       </div>
       {deck && <CardList deck={deck} />}
       </div>
-      </Route>
-      <Route path={`${url}/edit`}><UpdateDeck deck={deck} /></Route>
+      
       </div>
     )
 }

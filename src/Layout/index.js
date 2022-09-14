@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "./Header";
 import CreateDeck from "../Deck/CreateDeck";
-import DeckList, {handleCardCreate} from "../Deck/DeckList";
-import { Route, Switch } from "react-router-dom";
+import DeckLayout from "./DeckLayout";
+import { Route, Switch, Redirect } from "react-router-dom";
 import DeckView from "../Deck/DeckView";
-import CreateCard from "../Card/CreateCard";
+import CardList from "../Card/CardList";
 import NotFound from "./NotFound";
 import UpdateDeck from "../Deck/UpdateDeck";
 
@@ -16,21 +16,30 @@ function Layout() {
       <div className="container">
         {/* TODO: Implement the screen starting here */}
 
-        <Route path={"/"} exact>
-          <DeckList />
+        <Route path={"/"} exact >
+         <Redirect from="/" to="/decks" />
         </Route>
-
-        <Route path={"/decks"} exact>
-          <DeckList />
+       
+        <Route path={"/decks"} >
+          <DeckLayout />
         </Route>
-
-        <Route path={"/decks/new"} exact>
+       {/*  <Route path={"/decks/new"} exact>
           <CreateDeck />
         </Route>
 
-        <Route path={"/decks/:deckId"} >
+        <Route path={"/decks/:deckId"} exact >
           <DeckView />
         </Route>
+      <Route path={"/decks/:deckId/edit"} exact >
+          <UpdateDeck />
+        </Route>
+      <Route path={"/decks/:deckId/card"} exact>
+          <CardList />
+        </Route>*/}
+
+        
+  
+  
         {/* <Route path={"/decks/:deckId/edit"}><UpdateDeck /></Route> */}
         {/* <Route path={"/decks/:deckId/cards/new"}><CreateCard /></Route> */}
         

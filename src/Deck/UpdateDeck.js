@@ -37,7 +37,7 @@ function UpdateDeck({deck}){
       };
       
     return (
-      <Route path={`${url}`} >
+    
          
         <>
     <div className="pt-3">
@@ -85,7 +85,7 @@ function UpdateDeck({deck}){
     
     </>   
     
-        </Route>
+        
     )
 }
 export default UpdateDeck;
