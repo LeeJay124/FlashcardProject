@@ -13,7 +13,7 @@ function DeckLayout() {
   return (
     <div>
       <Switch>
-      <Route path={`${url}`} exact> "HI"<DeckList /></Route>
+      <Route path={`${url}`} exact><DeckList /></Route>
 
     <Route path={`${url}/new`} exact>
           <CreateDeck />
