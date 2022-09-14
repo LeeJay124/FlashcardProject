@@ -41,12 +41,6 @@
       "front": "What does <Switch> do?",
       "back": "Renders the first matching childs <Route> ",
       "deckId": 2
-    },
-    {
-      "id": 6,
-      "front": "testsetepp",
-      "back": "testes",
-      "deckId": 2
     }
   ]
 }
