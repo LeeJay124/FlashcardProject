@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useParams, useHistory, Link} from "react-router-dom";
 import {readDeck, createCard} from "../utils/api";
+import CardForm from "./CardForm";
 
 function CreateCard (){
 const {deckId} = useParams();
@@ -60,42 +61,7 @@ useEffect(() => {
     <li className="breadcrumb-item active" aria-current="page">Add Card</li>
   </ol>
 </nav>
-        <form name="createCard" onSubmit={handleCardSubmit}>
-          <table className="table table-bordered"> 
-          <tbody>
-          <tr><th>Add a Card</th></tr>
-          <tr><td>
-            <label className="p-3" htmlFor="deckId">Deck ID</label>
-            <input name="deckId"
-                    id="deckId"
-                    placeholder="DeckId"
-                    onChange={handleCardChange}
-                    value={cardFormData.deckId} required readOnly/>
-                    </td></tr>
-            <tr><td>
-            <label className="p-3" htmlFor="front">Front</label>
-            <textarea name="front"
-                    id="front"
-                    placeholder="Front"
-                    onChange={handleCardChange}
-                    value={cardFormData.front} required></textarea>
-                    </td></tr>
-                    <tr><td>
-            <label className="pr-3" htmlFor="back">Back</label>
-            <textarea name="back"
-                    id="back"
-                    placeholder="Back"
-                    onChange={handleCardChange}
-                    value={cardFormData.back} required></textarea>
-                    </td></tr>
-                    <tr><td>
-                    <button type="submit" className="btn btn-primary mr-3">Submit</button>
-                    <button  type="button" onClick={()=> history.goBack()} className="btn btn-danger">Cancel</button>
-
-                    </td></tr>
-                    </tbody>
-            </table>
-        </form>
+        <CardForm deck={deck} handleCardChange={handleCardChange} handleCardSubmit={handleCardSubmit} handleCardCreate={handleCardCreate} cardFormData={cardFormData} />
         </div>
     )
 }
