@@ -14,7 +14,7 @@ import CreateCard from "../Card/CreateCard";
 
 function Layout() {
   return (
-    <>
+    <div>
       <Header />
 
       <div className="container">
@@ -48,7 +48,7 @@ function Layout() {
         </Switch>
 
       </div>
-    </>
+    </div>
   );
 }
 
