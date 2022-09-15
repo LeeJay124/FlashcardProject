@@ -22,10 +22,13 @@ function Study() {
   }, []);
 
   function updateCurrentCard() {
-    if (currentCard < cards.length) {
+    console.log(currentCard + "before");
+    if ((currentCard + 1)  < cards.length) {
       setCurrentCard((currentCard + 1));
+      console.log(currentCard + "after");
       setIsFlipped(false);
-    }else{
+    }
+    else{
       handleRestart();
     }
     };
