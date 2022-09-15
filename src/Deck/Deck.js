@@ -11,7 +11,7 @@ function Deck({ deck, handleDeckDelete}) {
         <h5 className="card-title">
           {deck.name}
           <span className="card-subtitle float-right">
-            {deck.cards.length} Cards
+            {deck.cards.length} cards
           </span>
         </h5>
 
