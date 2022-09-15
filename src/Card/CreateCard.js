@@ -25,7 +25,7 @@ useEffect(() => {
 
         const abortController = new AbortController();
 
-        createCard(card.deckId, card, abortController.signal);
+        createCard(deckId, card, abortController.signal);
 
         history.push("/decks");
     }
@@ -74,19 +74,19 @@ useEffect(() => {
                     </td></tr>
             <tr><td>
             <label className="p-3" htmlFor="front">Front</label>
-            <input name="front"
+            <textarea name="front"
                     id="front"
                     placeholder="Front"
                     onChange={handleCardChange}
-                    value={cardFormData.front} required />
+                    value={cardFormData.front} required></textarea>
                     </td></tr>
                     <tr><td>
             <label className="pr-3" htmlFor="back">Back</label>
-            <input name="back"
+            <textarea name="back"
                     id="back"
                     placeholder="Back"
                     onChange={handleCardChange}
-                    value={cardFormData.back} required />
+                    value={cardFormData.back} required></textarea>
                     </td></tr>
                     <tr><td>
                     <button type="submit" className="btn btn-primary mr-3">Submit</button>

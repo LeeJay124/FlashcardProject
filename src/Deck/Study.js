@@ -24,6 +24,9 @@ function Study() {
   function updateCurrentCard() {
     if (currentCard < cards.length) {
       setCurrentCard((currentCard + 1));
+      setIsFlipped(false);
+    }else{
+      handleRestart();
     }
     };
     function handleRestart() {
@@ -56,7 +59,9 @@ function Study() {
 
                 <p className="card-text">{isFlipped ? `${cards[currentCard].back}` : `${cards[currentCard].front}`}</p>
                 <button className="btn btn-primary mr-3" type="button" onClick={() => setIsFlipped(!isFlipped)}>Flip</button>
-                {(currentCard + 1) === cards.length ? <button className="btn btn-primary" type="button" onClick={() => handleRestart()}>Start Over</button> : <button className="btn btn-primary" type="button" onClick={() => updateCurrentCard()}>Next Card</button>}
+               {isFlipped ?  <button className="btn btn-primary" type="button" onClick={()=> updateCurrentCard()}>Next Card</button> : ""}
+               {/* {isFlipped ? {(currentCard + 1) === cards.length ? <button className="btn btn-primary" type="button" onClick={() => handleRestart()}>Start Over</button> : <button className="btn btn-primary" type="button" onClick={() => updateCurrentCard()}>Next Card</button>} : ""} */}
+
               </div>
             </div>
 
