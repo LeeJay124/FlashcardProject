@@ -36,6 +36,7 @@ function Study() {
         const result = window.confirm("Restart Cards? Click cancel to retun to the home page.");
         if (result) {
           setCurrentCard(0);
+          setIsFlipped(false);
         } else {
           history.push("/");
         }
@@ -55,7 +56,7 @@ function Study() {
     <li className="breadcrumb-item active" aria-current="page">Study</li>
   </ol>
 </nav>
-            <h2>{`${deck.name}`}</h2>
+            <h2>Study: {`${deck.name}`}</h2>
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title"> Card {currentCard + 1} of {cards.length}</h5>
