@@ -54,7 +54,7 @@ function UpdateCard (){
           
               updateCard(card, abortController.signal);
           
-              history.push("/decks");
+              history.push("/");
         }
       };
       const handleCardSubmit = (event)=>{

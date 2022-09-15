@@ -28,7 +28,7 @@ useEffect(() => {
 
         createCard(deckId, card, abortController.signal);
 
-        history.push("/decks");
+        history.push("/");
     }
 };
 
