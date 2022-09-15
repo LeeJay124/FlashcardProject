@@ -1,12 +1,16 @@
 import React from "react";
 import Header from "./Header";
 import CreateDeck from "../Deck/CreateDeck";
-import DeckLayout from "./DeckLayout";
+
 import { Route, Switch, Redirect } from "react-router-dom";
 import DeckView from "../Deck/DeckView";
-import CardList from "../Card/CardList";
+
 import NotFound from "./NotFound";
 import UpdateDeck from "../Deck/UpdateDeck";
+import DeckList from "../Deck/DeckList";
+import Study from "../Deck/Study";
+import UpdateCard from "../Card/UpdateCard";
+import CreateCard from "../Card/CreateCard";
 
 function Layout() {
   return (
@@ -16,33 +20,32 @@ function Layout() {
       <div className="container">
         {/* TODO: Implement the screen starting here */}
 
-        <Route path={"/"} exact >
-         <Redirect from="/" to="/decks" />
-        </Route>
-       
-        <Route path={"/decks"} >
-          <DeckLayout />
-        </Route>
-       {/*  <Route path={"/decks/new"} exact>
+        <Switch>
+      <Route path="/" exact><DeckList /></Route>
+
+    <Route path="/decks/new" exact>
           <CreateDeck />
+      
         </Route>
 
-        <Route path={"/decks/:deckId"} exact >
+        <Route path="/decks/:deckId" exact >
           <DeckView />
         </Route>
-      <Route path={"/decks/:deckId/edit"} exact >
+        
+      <Route path="/decks/:deckId/edit" exact>
           <UpdateDeck />
         </Route>
-      <Route path={"/decks/:deckId/card"} exact>
-          <CardList />
-        </Route>*/}
-
-        
-  
-  
-        {/* <Route path={"/decks/:deckId/edit"}><UpdateDeck /></Route> */}
-        {/* <Route path={"/decks/:deckId/cards/new"}><CreateCard /></Route> */}
-        
+        <Route path="/decks/:deckId/study"exact>
+          <Study />
+        </Route>
+      <Route path="/decks/:deckId/cards/new" exact>
+          <CreateCard />
+        </Route>
+        <Route path="/decks/:deckId/cards/:cardId/edit" exact>
+         <UpdateCard />
+        </Route>
+        <Route><NotFound /></Route>
+        </Switch>
 
       </div>
     </>

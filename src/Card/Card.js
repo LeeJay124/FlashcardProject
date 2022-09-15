@@ -6,9 +6,7 @@ function Card({card, handleCardDelete}){
     return(
         <div className="card" key={card.id}>
       <div className="card-body">
-        <h5 className="card-title">
-          Card ID:{card.id} 
-        </h5>
+        
         <p className="card-text"><span className="font-weight-bold">Front: </span> {card.front}</p>
         <p className="card-text"><span className="font-weight-bold">Back: </span> {card.back}</p>
         <Link to={`${url}/cards/${card.id}/edit`} className="mt-2 mr-2">
